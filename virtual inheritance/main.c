@@ -1,8 +1,10 @@
 /* VIRTUAL INHERITANCE
- * By Merijn Hendriks
- * The code provided under the MIT license.
+ * Authors: Merijn Hendriks
+ * License: MIT
+ * Compile: clang main.c -std=c89 -Weverything -Wno-padded
  *
- * This implementation tries to solve the Dreaded Diamond Problem in C.
+ * This implementation tries to solve the diamond problem in C.
+ * Both B and C contain an instance of A. Which is the real one?
  *
  *   / B \
  * D       A
