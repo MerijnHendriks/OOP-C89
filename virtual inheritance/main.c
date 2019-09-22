@@ -9,7 +9,7 @@
  *   \ C /
  *
  * Unlike C++'s implementation, this version doesn't involve VTT's.
- * Instead, an instance of the class contains an additional pointer that
+ * Instead, an instance of the struct contains an additional pointer that
  * points to the reference of the inherited struct instance.
  *
  * In this case, both B and C inherit A, of which D inherits B and C.
@@ -67,7 +67,7 @@ static void A_ctor(struct A* self, int a)
 static void B_ctor(struct B* self, struct A* virtualA, int a, int b)
 {
     self->virtualA = virtualA;
-    A_ctor(virtualA, a);
+    A_ctor(self->virtualA, a);
 
     self->value = self->virtualA->value + b;
 }
@@ -75,7 +75,7 @@ static void B_ctor(struct B* self, struct A* virtualA, int a, int b)
 static void C_ctor(struct C* self, struct A* virtualA, int a, int c)
 {
     self->virtualA = virtualA;
-    A_ctor(virtualA, a);
+    A_ctor(self->virtualA, a);
 
     self->value = self->virtualA->value + c;
 }
