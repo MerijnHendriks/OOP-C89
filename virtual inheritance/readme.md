@@ -1,5 +1,5 @@
 # Virtual Inheritance
-Authors: Merijn Hendriks<br/>
+Authors: [Merijn Hendriks](https://github.com/MerijnHendriks)<br/>
 License: [MIT License](https://github.com/MerijnHendriks/OOP-C89/blob/master/LICENSE)<br/>
 Compile: ```clang main.c -std=c89 -Weverything -Wno-padded```
 
