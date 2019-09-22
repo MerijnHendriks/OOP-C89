@@ -71,10 +71,10 @@ int main()
     printf("Value of d: %d\n", d.value);
     printf("Value of d's b: %d\n", d.baseB.value);
     printf("Value of d's c: %d\n", d.baseC.value);
-    printf("Value of b's stack a: %d\n", d.baseB.baseA.value);
     printf("Value of b's virtual a: %d\n", d.baseB.virtualA->value);
-    printf("Value of c's stack a: %d\n", d.baseC.baseA.value);
     printf("Value of c's virtual a: %d\n", d.baseC.virtualA->value);
+    printf("Value of b's stack a: %d\n", d.baseB.baseA.value);
+    printf("Value of c's stack a: %d\n", d.baseC.baseA.value);
     
     return EXIT_SUCCESS;
 }
