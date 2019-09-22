@@ -1,35 +1,7 @@
 /* VIRTUAL INHERITANCE
- * Authors: Merijn Hendriks
- * License: MIT
- * Compile: clang main.c -std=c89 -Weverything -Wno-padded
- *
- * This implementation tries to solve the diamond problem in C.
- * Both B and C contain an instance of A. Which is the real one?
- *
- *   / B \
- * D       A
- *   \ C /
- *
- * Unlike C++'s implementation, this version doesn't involve VTT's.
- * Instead, an instance of the struct contains an additional pointer that
- * points to the reference of the inherited struct instance.
- *
- * In this case, both B and C inherit A, of which D inherits B and C.
- * B's baseA is the instance to which B's virtualA and c's virtualA
- * point to.
- *
- *   / B (virtualA -> baseA)     \
- * D                               A
- *   \ C (virtualA -> B's baseA) /
- *
- * The performance cost of virtual inheritance is the additional
- * virtual pointer that contains the reference to the real instance.
- * That should be around 8 bytes per instance per inherited struct
- * containing a multiple inherited struct.
- *
- * When using this implementation, use the virtual pointer to manipulate
- * the inherited instance and pass the instance reference top-down in the
- * constructor. Initialize the instances bottom-up.
+ * Authors:        Merijn Hendriks
+ * License:        MIT License
+ * Documentation:  see readme.md
  */
 
 #include <stdio.h>
