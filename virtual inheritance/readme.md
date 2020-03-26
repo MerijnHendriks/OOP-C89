@@ -1,9 +1,11 @@
 # Virtual Inheritance
 Both B and C contain an instance of A. Which is the real one?
 ```
-   / B \
- D       A
-   \ C /
+     B
+   /   \
+  D     A
+   \   /
+     C
 ```
 
 This implementation tries to solve the diamond problem in C.
