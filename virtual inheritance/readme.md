@@ -15,7 +15,7 @@ Unlike C++'s implementation, this version doesn't involve VTT's. Instead, an ins
 ```
      A
    /   \
- B       C
+ B ----> C
    \   /
      D
 
