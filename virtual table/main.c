@@ -42,6 +42,7 @@ int main()
     struct A a;
     
     A_ctor(&a, 1);
+    
     a.vptr->print(&a);    
     
     return EXIT_SUCCESS;
