@@ -20,13 +20,23 @@ struct B
 
 static void A_ctor(struct A* self, int a)
 {
+    if (!self)
+    {
+        return;
+    }
+
     self->value = a;
 }
 
 static void B_ctor(struct B* self, int a, int b)
 {
-    A_ctor(&self->baseA, a);
+    if (!self)
+    {
+        return;
+    }
 
+    A_ctor(&self->baseA, a);
+    
     self->value = self->baseA.value + b;
 }
 

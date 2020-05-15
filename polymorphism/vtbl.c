@@ -33,6 +33,11 @@ static A_vtbl a_vtbl =
 
 static void A_ctor(struct A* self, int a)
 {
+    if (!self)
+    {
+        return;
+    }
+
     self->value = a;
     self->vptr = &a_vtbl;
 }

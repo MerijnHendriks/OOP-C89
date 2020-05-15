@@ -35,27 +35,47 @@ struct D
 
 static void A_ctor(struct A* self, int a)
 {
+    if (!self)
+    {
+        return;
+    }
+
     self->value = a;
 }
 
 static void B_ctor(struct B* self, struct A* virtualA, int a, int b)
 {
-    self->virtualA = virtualA;
-    A_ctor(self->virtualA, a);
+    if (!self)
+    {
+        return;
+    }
 
-    self->value = self->virtualA->value + b;
+    self->virtualA = virtualA;
+    A_ctor(virtualA, a);
+
+    self->value = virtualA->value + b;
 }
 
 static void C_ctor(struct C* self, struct A* virtualA, int a, int c)
 {
-    self->virtualA = virtualA;
-    A_ctor(self->virtualA, a);
+    if (!self)
+    {
+        return;
+    }
 
-    self->value = self->virtualA->value + c;
+    self->virtualA = virtualA;
+    A_ctor(virtualA, a);
+
+    self->value = virtualA->value + c;
 }
 
 static void D_ctor(struct D* self, int a, int b, int c)
 {
+    if (!self)
+    {
+        return;
+    }
+
     B_ctor(&self->baseB, &self->baseB.baseA, a, b);
     C_ctor(&self->baseC, &self->baseB.baseA, a, c);
 
@@ -73,8 +93,8 @@ int main()
     printf("Value of d's c: %d\n", d.baseC.value);
     printf("Value of b's virtual a: %d\n", d.baseB.virtualA->value);
     printf("Value of c's virtual a: %d\n", d.baseC.virtualA->value);
-    printf("Value of b's stack a: %d\n", d.baseB.baseA.value);
-    printf("Value of c's stack a: %d\n", d.baseC.baseA.value);
+    printf("Value of b's base a: %d\n", d.baseB.baseA.value);
+    printf("Value of c's base a: %d\n", d.baseC.baseA.value);
     
     return EXIT_SUCCESS;
 }

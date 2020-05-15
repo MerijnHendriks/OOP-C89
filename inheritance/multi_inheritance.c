@@ -26,16 +26,31 @@ struct C
 
 static void A_ctor(struct A* self, int a)
 {
+    if (!self)
+    {
+        return;
+    }
+
     self->value = a;
 }
 
 static void B_ctor(struct B* self, int b)
 {
+    if (!self)
+    {
+        return;
+    }
+
     self->value = b;
 }
 
 static void C_ctor(struct C* self, int a, int b)
 {
+    if (!self)
+    {
+        return;
+    }
+    
     A_ctor(&self->baseA, a);
     B_ctor(&self->baseB, b);
 
